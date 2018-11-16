@@ -1,21 +1,22 @@
-sudo : required
-dist : trusty
-language : php
+sudo: required
+dist: trusty
+language: php
 
-php:
-  - 7.1
+php :
+  -7.1
 
 branches:
-only:
--master #-> QA/Staging server
--develop #-> DevServer
+  only:
+    -master 
+    -develop
 
-# Install Environtment di OS
+# install Environment di OS
 before_install:
-- curl -L0 https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-- chmod +x ./kubect1 #permission
-- sudo mv ./kubect1/ust/local/bin/kubect1 #move to persiten
+
 # Precompile
 before_script:
-# Main Excecution(Build)
-Script:
+  -curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.text)/bin/linux/amd64/kubectl
+  - chmod +x ./kubectl
+  -sudo mv .kubectl/usr/local/bin/kubectl
+# Main Execution (Build)
+script:
